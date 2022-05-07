@@ -2,9 +2,9 @@
 
 This libray is intended to do three things:
 
-1 - Generate n monte carlo simulation trials 
-2 - Return a quantile value for any give probabilty (0-1)
-3 - TODO: Return a probability for any given quantile value 
+1 - Generate n monte carlo simulation trials  
+2 - Return a quantile value for any give probabilty (0-1)  
+3 - TODO: Return a probability for any given quantile value.  
 
 Each of the following functions takes as input a SIPMath Library or Metalog<sup>*</sup> aCoefficients and boundaries.
 The SIPmath 3.0 standard is expected as the input format. See ProbabilityManagement.org for specificaitons.
