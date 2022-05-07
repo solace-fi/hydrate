@@ -6,11 +6,16 @@
     "node": ">=10"
   },
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test --no-cache",
-    "lint": "tsdx lint src test"
+      "start": "tsdx watch",
+      "build": "tsdx build",
+      "test": "tsdx test --no-cache",
+      "lint": "tsdx lint src test",
+      "prepare": "rm -r dist && npm run build"
   },
   "author": "",
   "license": "ISC",

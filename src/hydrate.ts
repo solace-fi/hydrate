@@ -26,7 +26,6 @@ export function simulateSIP(selfIn, sip, simTrials) {
   let aCoeffs = selfIn.sips[sipIndex].arguments.aCoefficients;
   let lowerBound = undefined;
   let upperBound = undefined;
-  let a = "";
   let functionName = selfIn.sips[sipIndex].function;
 
   // This need to be rethought out as we are pulling a lot of numbers we don't need but for now :shrugs:
@@ -122,8 +121,6 @@ function generateCopula(selfy, copulaCount, simTrials) {
       selfy.globalVariables.forEach((item, index) => {
         if (item["name"] == specifyCorrelationMatrix) {
           whichCorrelationMatrix = index;
-        } else {
-          let index = -1;
         }
       });
 
@@ -269,7 +266,6 @@ function convertMx(correlationMatrix) {
 function multiply(a, b): number[][] {
   var aNumRows = a.length,
     aNumCols = a[0].length || 0, // if a is a vector
-    bNumRows = b.length,
     bNumCols = b[0].length || 0,
     m = new Array(aNumRows); // initialize array of rows
 

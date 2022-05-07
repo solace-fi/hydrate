@@ -1,7 +1,7 @@
 import { hydrateLibrary, simulateSIP, metalog, listSIPs } from '../src/hydrate';
 import example_tokens from '../src/json/example_tokens.json';
-import example_bounded from '../src/json/example_bounded.json'
-import example_gaussian from '../src/json/example_gaussian.json'
+// import example_bounded from '../src/json/example_bounded.json'
+// import example_gaussian from '../src/json/example_gaussian.json'
 
 describe('SolaceBalance', () => {
     beforeEach(() => {

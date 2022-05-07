@@ -1,24 +1,44 @@
 {
-  // Change this to match your project
-  "include": ["src/**/*"],
+  // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
+  "include": ["src", "types"],
   "compilerOptions": {
-    // Tells TypeScript to read JS files, as
+        // Tells TypeScript to read JS files, as
     // normally they are ignored as source files
     "allowJs": true,
     // Generate d.ts files
     "declaration": true,
-    // This compiler run should
-    // only output d.ts files
-    "emitDeclarationOnly": true,
-    // Types should go into this directory.
-    // Removing this would place the .d.ts files
-    // next to the .js files
     "outDir": "dist",
     // go to js file when using IDE functions like
     // "Go to Definition" in VSCode
     "declarationMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "importHelpers": true,
+    // output .js.map sourcemap files for consumers
+    "sourceMap": true,
+    // match output dir to input dir. e.g. dist/index instead of dist/src/index
+    "rootDir": "./src",
+    // stricter type-checking for stronger correctness. Recommended by TS
+    "strict": false,
+    // linter checks for common issues
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    // noUnused* overlap with @typescript-eslint/no-unused-vars, can disable if duplicative
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    // use Node's module resolution algorithm, instead of the legacy TS one
+    "moduleResolution": "node",
+    // transpile JSX to React.createElement
+    "jsx": "react",
+    // interop between ESM and CJS modules. Recommended by TS
+    "esModuleInterop": true,
+    // significant perf increase by skipping checking .d.ts files, particularly those in node_modules. Recommended by TS
+    "skipLibCheck": true,
+    // error out if import and file system have a casing mismatch. Recommended by TS
+    "forceConsistentCasingInFileNames": true,
+    // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
+    "noEmit": true,
+    "resolveJsonModule": true,
   }
 }

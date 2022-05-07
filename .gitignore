@@ -1,1 +1,6 @@
+*.log
+.DS_Store
 node_modules
+dist
+test/a.test.ts
+a.js
