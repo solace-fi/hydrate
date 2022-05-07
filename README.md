@@ -12,6 +12,8 @@ The SIPmath 3.0 standard is expected as the input format. See ProbabilityManagem
 
 The following functions are supported:
 ```js
+import { hydrateLibrary, metalog, simulateSIP, listSIPs } from "@solace-fi/hydrate"
+
 // Generate n Monte Carlos Trials for each distribution found in the input SIPMath 'library'
 hydrateLibrary(example_tokens, 10) // first 10 trials for all SIPs in the library
 
