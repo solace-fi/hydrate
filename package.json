@@ -1,6 +1,6 @@
 {
   "name": "@solace-fi/hydrate",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "types": "dist/main.d.ts",
   "engines": {
     "node": ">=10"
@@ -11,10 +11,10 @@
     "dist"
   ],
   "scripts": {
-      "start": "tsdx watch",
-      "build": "tsdx build",
-      "test": "tsdx test --no-cache",
-      "lint": "tsdx lint src test"
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --no-cache",
+    "lint": "tsdx lint src test"
   },
   "author": "",
   "license": "ISC",
