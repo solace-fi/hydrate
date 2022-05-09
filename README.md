@@ -1,10 +1,10 @@
 # hydrate
 
-This libray is intended to do three things:
+This **alpha** libray is intended to do three things:
 
 1 - Generate n Monte Carlo simulation trials  
 2 - Return a quantile value for any give probability (0-1)  
-3 - TODO: Return a probability for any given quantile value.  
+3 - Return a probability for any given quantile value.  
 
 Each of the following functions takes as input a SIPMath Library or Metalog<sup>*</sup> aCoefficients and boundaries.
 The SIPmath 3.0 standard is expected as the input format. See ProbabilityManagement.org for specifications.
@@ -29,6 +29,16 @@ const a = example_bounded.sips[3].arguments.aCoefficients // array of Metalog aC
 const bu = example_bounded.sips[3].arguments.upperBound // may be empty string
 const bl = example_bounded.sips[3].arguments.lowerBound // may be empty string
 metalog(y, a, bl, bu)
+
+// Returns the qualtile values at the probabiliies of p[] (0 - 1)  
+const p = [0.9, 0.5, 0.1] // variable represents the probability values to find quantiles for
+const a = example_tokens.sips[0].arguments.aCoefficients // see src/json folder for example_xyz
+q(p, a, undefined, undefined)
+
+// Returns the probabilities at the quantile values []
+const q = [1.01, 1.0, 0.98] // variable represents the quantile values to find probabilities for
+const a = example_tokens.sips[0].arguments.aCoefficients // see src/json folder for example_xyz
+p(q, a, 3) 
 ```
 
 Hydrate works with the output from Solace /volatility endpoint https://risk-data-docs.solace.fi/ and any SIPMath 3.0 compliant libraries. Example libraries can be found in the [Hydrate repository](https://github.com/solace-fi/hydrate/tree/main/src/json)  
