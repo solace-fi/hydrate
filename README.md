@@ -1,6 +1,6 @@
 # hydrate
 
-This **alpha** libray is intended to do three things:
+This **alpha** library is intended to do three things:
 
 1 - Generate n Monte Carlo simulation trials  
 2 - Return a quantile value for any give probability (0-1)  
@@ -12,15 +12,15 @@ The SIPmath 3.0 standard is expected as the input format. See ProbabilityManagem
 
 The following functions are supported:
 ```js
-import { hydrateLibrary, metalog, simulateSIP, listSIPs,p ,q } from "@solace-fi/hydrate"
+import { hydrateLibrary, metalog, simulateSIP, listSIPs, p ,q } from "@solace-fi/hydrate"
 
-// Generate n Monte Carlos Trials for each distribution found in the input SIPMath 'library'
+// Generate n Monte Carlo Trials for each distribution found in the input SIPMath 'library'
 hydrateLibrary(example_tokens, 10) // first 10 trials for all SIPs in the library
 
 // Return an array of the names for the SIPs found in a SIPMath Library
 listSIPs(example_tokens) // eg ['AAVE', 'SOLACE', 'ETH']
 
-// Generate n Monte Carlos Trials for a distribution found in the input SIPMath 'library'
+// Generate n Monte Carlo Trials for a distribution found in the input SIPMath 'library'
 simulateSIP(example_tokens, 'AAVE', 10)
 
 // Returns the value at the probability of y (0 - 1) 
