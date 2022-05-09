@@ -1,7 +1,7 @@
 var { jStat } = require('jstat')
+import { newtons_method_metalog } from "./utils";
 
-
-export function hydrateLibrary(LibraryIn, numberOfTrialsRequested) {
+export function hydrateLibrary(LibraryIn: { sips: string | any[]; }, numberOfTrialsRequested: any) {
   let simLibrary = {};
   for (let i = 0; i < LibraryIn.sips.length; i++) {
     const tokenIn = LibraryIn.sips[i].name;
@@ -12,7 +12,7 @@ export function hydrateLibrary(LibraryIn, numberOfTrialsRequested) {
   return simLibrary;
 }
 
-export function simulateSIP(selfIn, sip, simTrials) {
+export function simulateSIP(selfIn: { sips: any; U01?: any; }, sip: any, simTrials: any) {
   /**
    * Expects library as input and the name of A sip
    * TODO: Add an all option for doing all sips
@@ -67,7 +67,7 @@ export function simulateSIP(selfIn, sip, simTrials) {
 
 }
 
-export function metalog(y, a, bl?: number, bu?: number) {
+export function metalog(y: any, a: any[], bl?: number, bu?: number) {
 
   let vector = [];
   let np_a = a;
@@ -79,7 +79,7 @@ export function metalog(y, a, bl?: number, bu?: number) {
   let wrappedVector = [vector];
   let wrappedNp_x = [np_a];
 
-  let wrappedNp_a = wrappedNp_x[0].map(e => [e])
+  let wrappedNp_a = wrappedNp_x[0].map((e: any) => [e])
   let mky = multiply(wrappedVector, wrappedNp_a);
 
   const newMky = mky[0][0];
@@ -94,7 +94,25 @@ export function metalog(y, a, bl?: number, bu?: number) {
   return newMky
 }
 
-export function listSIPs(LibraryIn) {
+export function q(p: any[], a: any[], bl?: number, bu?: number) {
+  // return quantiles for array of probabilies p
+  let ps = []; // array of quantiles
+  for (let i = 0; i < p.length; i++) {
+    ps[i] = metalog(p[i], a, bl, bu)
+  }
+  return ps;
+}
+
+export function p(q: any, a: any, term = 3) {
+  // return probabilies for array of quantiles q
+  let qs = []; // array of quantiles
+  for (let i = 0; i < q.length; i++) {
+    qs[i] = newtons_method_metalog(q[i], a, term)
+  }
+  return qs
+}
+
+export function listSIPs(LibraryIn: { sips: string | any[]; }) {
   let sipList = [];
   for (let i = 0; i < LibraryIn.sips.length; i++) {
     sipList[i] = LibraryIn.sips[i].name;;
@@ -171,7 +189,7 @@ function prepGenerateRandom(args, selfIn, simTrials) {
 
   for (var distTrials = 0; distTrials < simTrials; distTrials++) {
     // samples[distTrials] = HDRando(seedPerDist, distTrials);
-    samples[distTrials] = HDRando2(seedPerDistEntity,seedPerDistVarId,seedPerDistSeed3, seedPerDistSeed4,distTrials);
+    samples[distTrials] = HDRando2(seedPerDistEntity, seedPerDistVarId, seedPerDistSeed3, seedPerDistSeed4, distTrials);
   }
   return samples;
 }
@@ -196,14 +214,14 @@ function HDRando2(entityID, varId, option1, option2, PM_Index) {
           999999999999989,
           MOD(
             PM_Index * 2499997 +
-              varId * 1800451 +
-              entityID * 2000371 +
-              option1 * 1796777 +
-              option2 * 2299603,
+            varId * 1800451 +
+            entityID * 2000371 +
+            option1 * 1796777 +
+            option2 * 2299603,
             7450589
           ) *
-            4658 +
-            7450581
+          4658 +
+          7450581
         ) * 383,
         99991
       ) *
@@ -213,18 +231,18 @@ function HDRando2(entityID, varId, option1, option2, PM_Index) {
             999999999999989,
             MOD(
               PM_Index * 2246527 +
-                varId * 2399993 +
-                entityID * 2100869 +
-                option1 * 1918303 +
-                option2 * 1624729,
+              varId * 2399993 +
+              entityID * 2100869 +
+              option1 * 1918303 +
+              option2 * 1624729,
               7450987
             ) *
-              7580 +
-              7560584
+            7580 +
+            7560584
           ) * 17669,
           7440893
         )) *
-        1343,
+      1343,
       largePrime
     ) +
       0.5) /
@@ -289,7 +307,7 @@ function basis(y, t) {
     ret = 1;
   } else if (t === 2) {
     ret = Math.log(y / (1 - y));
-    if (isNaN(ret)) {}
+    if (isNaN(ret)) { }
   } else if (t === 3) {
     ret = (y - 0.5) * Math.log(y / (1 - y));
     if (isNaN(ret)) {
@@ -297,13 +315,13 @@ function basis(y, t) {
     }
   } else if (t === 4) {
     ret = y - 0.5;
-    if (isNaN(ret)) {}
+    if (isNaN(ret)) { }
   } else if (t >= 5 && t % 2 === 1) {
     ret = Math.pow(y - 0.5, Math.floor((t - 1) / 2));
-    if (isNaN(ret)) {}
+    if (isNaN(ret)) { }
   } else if (t >= 6 && t % 2 === 0) {
     ret = Math.pow(y - 0.5, Math.floor((t - 1) / 2)) * Math.log(y / (1 - y));
-    if (isNaN(ret)) {}
+    if (isNaN(ret)) { }
   }
   return ret;
 }

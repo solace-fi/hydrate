@@ -2,12 +2,12 @@
 
 This libray is intended to do three things:
 
-1 - Generate n monte carlo simulation trials  
-2 - Return a quantile value for any give probabilty (0-1)  
+1 - Generate n Monte Carlo simulation trials  
+2 - Return a quantile value for any give probability (0-1)  
 3 - TODO: Return a probability for any given quantile value.  
 
 Each of the following functions takes as input a SIPMath Library or Metalog<sup>*</sup> aCoefficients and boundaries.
-The SIPmath 3.0 standard is expected as the input format. See ProbabilityManagement.org for specificaitons.
+The SIPmath 3.0 standard is expected as the input format. See ProbabilityManagement.org for specifications.
  
 
 The following functions are supported:
@@ -31,7 +31,7 @@ const bl = example_bounded.sips[3].arguments.lowerBound // may be empty string
 metalog(y, a, bl, bu)
 ```
 
-Hydrate works with the output from Solace /volatility endpoint https://risk-data-docs.solace.fi/ and any SIPMath 3.0 compliant libraries.
+Hydrate works with the output from Solace /volatility endpoint https://risk-data-docs.solace.fi/ and any SIPMath 3.0 compliant libraries. Example libraries can be found in the [Hydrate repository](https://github.com/solace-fi/hydrate/tree/main/src/json)  
 TODO Update swagger with /volatility and /price-history
 
-*metalog package can be found at https://pypi.org/project/metalog/
+*Metalog package can be found at https://pypi.org/project/metalog/
